@@ -20,7 +20,7 @@
       background: linear-gradient(135deg, #4CAF50, #8BC34A);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-    .subtitle { color: var(--text-dim); margin-bottom: 2rem; text-align: center; }
+    .subtitle { color: var(--text-dim); margin-bottom: 2rem; text-align: center; font-size: 0.95rem; }
     .grid {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 1.2rem; width: 100%; max-width: 1100px;
@@ -42,47 +42,39 @@
       background: #2c2c2c; color: #b0b0b0; font-size: .75rem;
       padding: .2rem .6rem; border-radius: 20px; border: 1px solid #3a3a3a;
     }
-    .tag.recommend {
-      background: var(--accent); color: #000; border-color: var(--accent); font-weight: 600;
-    }
-    footer { margin-top: 3rem; color: #555; font-size: .8rem; }
+    .tag.recommend { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 600; }
+    footer { margin-top: 3rem; color: #555; font-size: .8rem; text-align: center; padding-bottom: 2rem; }
   </style>
 </head>
 <body>
   <h1>🎮 选择 Minecraft 版本</h1>
-  <p class="subtitle">点击卡片进入游戏 · 存档保存在浏览器本地</p>
+  <p class="subtitle">点击卡片进入游戏 · 存档保存在浏览器本地，请定期导出备份</p>
   <div class="grid" id="versionGrid"></div>
   <footer>Powered by Eaglercraft · 托管于 Cloudflare Pages</footer>
 
   <script>
-    // ====== 根据你的实际文件夹修改这里 ======
-    const versions = 
-const versions = [
-  { 
-    name: 'EaglercraftX 1.8.8 离线版本', 
-    desc: 'Eaglercraft的1.8.8版本，由lax1dude制作。这是目前最稳定且部署最广泛的Eaglercraft版本。',
-    tags: ['推荐', '移动端', 'JS'],
-    path: './1.8.8-js/' 
-  },
-  { 
-    name: '26.2 (zeus)', 
-    desc: '自建新版本，带皮肤。单一 HTML 文件，保存后在浏览器直接打开即可。',
-    tags: ['新构建', '单文件'],
-    path: '../26.2-js/' 
-  },
-  { 
-    name: '1.12.2 (JS)', 
-    desc: '较新版本，支持红石更新、命令方块等。JavaScript 版，兼容性好。',
-    tags: ['JS', '新特性'],
-    path: './1.12.2-js/' 
-  },
-  { 
-    name: '1.5.2 经典版', 
-    desc: 'Eaglercraft 最初版本，稳定性强，怀旧首选。',
-    tags: ['怀旧', '经典'],
-    path: './1.5.2/' 
-  }
-];
+    // ====== 根据你的 GitHub 仓库实际文件夹修改这里 ======
+    const versions = [
+      {
+        name: '1.8.8 (JS)',
+        desc: '经典版本，兼容性最好，支持移动触屏操作。',
+        tags: ['推荐', '移动端', 'JS'],
+        path: './1.8.8-js/' 
+      },
+      {
+        name: '1.5.2 经典版',
+        desc: 'Eaglercraft 最初版本，稳定性强，怀旧首选。',
+        tags: ['怀旧', '经典'],
+        path: './1.5.2-js/' 
+      }
+      // 以后有新的版本，按上面的格式往下加即可，比如：
+      // {
+      //   name: '1.12.2 (WASM)',
+      //   desc: '较新版本，支持红石更新、命令方块等。',
+      //   tags: ['WASM', '新特性'],
+      //   path: './1.12.2-wasm/' 
+      // }
+    ];
 
     const grid = document.getElementById('versionGrid');
     versions.forEach(v => {
